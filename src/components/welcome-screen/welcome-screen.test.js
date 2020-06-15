@@ -5,7 +5,9 @@ import WelcomeScreen from "./welcome-screen.jsx";
 describe(`WelcomeScreen`, () => {
   it(`Renders correctly`, () => {
     const tree = renderer
-      .create(<WelcomeScreen errorsCount={3} />)
+      .create(<WelcomeScreen
+        errorsCount={3}
+        onWelcomeButtonClick={() => {}} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
