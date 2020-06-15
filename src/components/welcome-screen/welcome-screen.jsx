@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const WelcomeScreen = ({errorsCount}) => {
   return (
-    <section classNameName="welcome">
+    <section className="welcome">
       <div className="welcome__logo">
         <img
           src="img/melody-logo.png"
