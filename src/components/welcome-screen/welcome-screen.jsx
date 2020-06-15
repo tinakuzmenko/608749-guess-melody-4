@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const WelcomeScreen = ({errorsCount}) => {
+const WelcomeScreen = ({errorsCount, onWelcomeButtonClick}) => {
   return (
-    <section classNameName="welcome">
+    <section className="welcome">
       <div className="welcome__logo">
         <img
           src="img/melody-logo.png"
@@ -12,7 +12,9 @@ const WelcomeScreen = ({errorsCount}) => {
           height="83"
         />
       </div>
-      <button className="welcome__button">
+      <button
+        onClick={onWelcomeButtonClick}
+        className="welcome__button">
         <span className="visually-hidden">Начать игру</span>
       </button>
       <h2 className="welcome__rules-title">Правила игры</h2>
@@ -28,6 +30,7 @@ const WelcomeScreen = ({errorsCount}) => {
 
 WelcomeScreen.propTypes = {
   errorsCount: PropTypes.number.isRequired,
+  onWelcomeButtonClick: PropTypes.func.isRequired,
 };
 
 export default WelcomeScreen;
