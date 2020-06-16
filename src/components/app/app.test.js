@@ -27,13 +27,13 @@ const questions = [
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
     },
     answers: [{
-      picture: `https://api.adorable.io/avatars/128/${Math.random()}`,
+      picture: `https://api.adorable.io/avatars/128/1`,
       artist: `John Snow`,
     }, {
-      picture: `https://api.adorable.io/avatars/128/${Math.random()}`,
+      picture: `https://api.adorable.io/avatars/128/2`,
       artist: `Jack Daniels`,
     }, {
-      picture: `https://api.adorable.io/avatars/128/${Math.random()}`,
+      picture: `https://api.adorable.io/avatars/128/3`,
       artist: `Jim Beam`,
     }],
   }
