@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ArtistQuestionsScreen Renders correctly 1`] = `
+exports[`GenreQuestionsScreen Renders correctly 1`] = `
 <section
   className="game game--genre"
 >

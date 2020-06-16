@@ -38,7 +38,7 @@ export default class GenreQuestionsScreen extends PureComponent {
             className="game__tracks"
             onSubmit={(evt) => {
               evt.preventDefault();
-              onAnswer(question, this.state.answers);
+              onAnswer(question);
             }}>
             {answers.map((answer, index) =>
               (

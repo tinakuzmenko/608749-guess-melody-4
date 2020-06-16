@@ -20,7 +20,7 @@ const question = {
   }],
 };
 
-describe(`ArtistQuestionsScreen`, () => {
+describe(`GenreQuestionsScreen`, () => {
   it(`Renders correctly`, () => {
     const tree = renderer
       .create(<GenreQuestionsScreen
