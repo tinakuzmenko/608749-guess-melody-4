@@ -11,16 +11,16 @@ const question = {
   type: `genre`,
   genre: `rock`,
   answers: [{
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+    src: `path`,
     genre: `rock`,
   }, {
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+    src: `path`,
     genre: `blues`,
   }, {
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+    src: `path`,
     genre: `jazz`,
   }, {
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+    src: `path`,
     genre: `rock`,
   }],
 };
@@ -44,5 +44,30 @@ describe(`GenreQuestionsScreen e2e tests`, () => {
 
     expect(onAnswer).toHaveBeenCalledTimes(1);
     expect(formSendPrevention).toHaveBeenCalledTimes(1);
+  });
+
+  it(`User's answer passed to callback is consistent with "userAnswer" prop`, () => {
+    const onAnswer = jest.fn((...args) => [...args]);
+    const userAnswer = [false, true, false, false];
+
+    const genreQuestion = shallow(<GenreQuestionsScreen
+      onAnswer={onAnswer}
+      question={question}
+    />);
+
+    const form = genreQuestion.find(`form`);
+    const inputTwo = genreQuestion.find(`input`).at(1);
+
+    inputTwo.simulate(`change`, {target: {checked: true}});
+    form.simulate(`submit`, {preventDefault() {}});
+
+    expect(onAnswer).toHaveBeenCalledTimes(1);
+
+    expect(onAnswer.mock.calls[0][0]).toMatchObject(question);
+    expect(onAnswer.mock.calls[0][1]).toMatchObject(userAnswer);
+
+    expect(
+        genreQuestion.find(`input`).map((it) => it.prop(`checked`))
+    ).toEqual(userAnswer);
   });
 });

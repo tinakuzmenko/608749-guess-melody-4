@@ -5,10 +5,15 @@ import {GameType} from '../../helpers/constants.js';
 export default class GenreQuestionsScreen extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      answers: [false, false, false, false],
+    };
   }
 
   render() {
     const {onAnswer, question} = this.props;
+    const {answers: userAnswers} = this.state;
     const {answers, genre} = question;
 
     return (
@@ -38,7 +43,7 @@ export default class GenreQuestionsScreen extends PureComponent {
             className="game__tracks"
             onSubmit={(evt) => {
               evt.preventDefault();
-              onAnswer(question);
+              onAnswer(question, this.state.answers);
             }}>
             {answers.map((answer, index) =>
               (
@@ -55,6 +60,14 @@ export default class GenreQuestionsScreen extends PureComponent {
                       name="answer"
                       value={`answer-${index}`}
                       id={`answer-${index}`}
+                      checked={userAnswers[index]}
+                      onChange={(evt) => {
+                        const value = evt.target.checked;
+
+                        this.setState({
+                          answers: [...userAnswers.slice(0, index), value, ...userAnswers.slice(index + 1)],
+                        });
+                      }}
                     />
                     <label
                       className="game__check"

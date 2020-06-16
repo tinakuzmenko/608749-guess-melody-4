@@ -6,16 +6,16 @@ const question = {
   type: `genre`,
   genre: `rock`,
   answers: [{
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+    src: `path`,
     genre: `rock`,
   }, {
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+    src: `path`,
     genre: `blues`,
   }, {
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+    src: `path`,
     genre: `jazz`,
   }, {
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+    src: `path`,
     genre: `rock`,
   }],
 };

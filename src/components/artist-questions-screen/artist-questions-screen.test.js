@@ -5,18 +5,18 @@ import ArtistQuestionsScreen from "./artist-questions-screen.jsx";
 const question = {
   type: `artist`,
   song: {
-    artist: `Jim Beam`,
+    artist: `Lady Gaga`,
     src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
   },
   answers: [{
-    picture: `https://api.adorable.io/avatars/128/${Math.random()}`,
-    artist: `John Snow`,
+    picture: `https://api.adorable.io/avatars/128/1`,
+    artist: `Madonna`,
   }, {
-    picture: `https://api.adorable.io/avatars/128/${Math.random()}`,
-    artist: `Jack Daniels`,
+    picture: `https://api.adorable.io/avatars/128/2`,
+    artist: `Lady Gaga`,
   }, {
-    picture: `https://api.adorable.io/avatars/128/${Math.random()}`,
-    artist: `Jim Beam`,
+    picture: `https://api.adorable.io/avatars/128/3`,
+    artist: `Britney Spears`,
   }],
 };
 

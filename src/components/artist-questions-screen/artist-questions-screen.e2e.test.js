@@ -10,39 +10,48 @@ Enzyme.configure({
 const question = {
   type: `artist`,
   song: {
-    artist: `Jim Beam`,
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+    artist: ``,
+    src: ``
   },
-  answers: [{
-    picture: `https://api.adorable.io/avatars/128/${Math.random()}`,
-    artist: `John Snow`,
-  }, {
-    picture: `https://api.adorable.io/avatars/128/${Math.random()}`,
-    artist: `Jack Daniels`,
-  }, {
-    picture: `https://api.adorable.io/avatars/128/${Math.random()}`,
-    artist: `Jim Beam`,
-  }],
+  answers: [
+    {
+      artist: `one`,
+      picture: `pic-one`,
+    },
+    {
+      artist: `two`,
+      picture: `pic-two`,
+    },
+    {
+      artist: `three`,
+      picture: `pic-three`,
+    },
+  ],
 };
 
 describe(`ArtistQuestionsScreen e2e tests`, () => {
-  it(`Form is not sent on submit`, () => {
+  it(`User's answer should pass required object`, () => {
     const onAnswer = jest.fn();
+    const userAnswer = {
+      artist: `one`,
+      picture: `pic-one`,
+    };
 
-    const genreQuestionsScreen = shallow(
-        <ArtistQuestionsScreen
-          question={question}
-          onAnswer={onAnswer} />
-    );
+    const screen = shallow(<ArtistQuestionsScreen
+      onAnswer={onAnswer}
+      question={question}
+    />);
 
-    const formElement = genreQuestionsScreen.find(`form`);
-    const formSendPrevention = jest.fn();
+    const answerInputs = screen.find(`input`);
+    const answerOne = answerInputs.at(0);
 
-    formElement.simulate(`submit`, {
-      preventDefault: formSendPrevention,
+    answerOne.simulate(`change`, {
+      preventDefault() {},
     });
 
     expect(onAnswer).toHaveBeenCalledTimes(1);
-    expect(formSendPrevention).toHaveBeenCalledTimes(1);
+
+    expect(onAnswer.mock.calls[0][0]).toMatchObject(question);
+    expect(onAnswer.mock.calls[0][1]).toMatchObject(userAnswer);
   });
 });
