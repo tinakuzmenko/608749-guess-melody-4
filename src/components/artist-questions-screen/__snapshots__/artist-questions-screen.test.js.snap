@@ -84,6 +84,7 @@ exports[`ArtistQuestionsScreen Renders correctly 1`] = `
     </div>
     <form
       className="game__artist"
+      onSubmit={[Function]}
     >
       <div
         className="artist"

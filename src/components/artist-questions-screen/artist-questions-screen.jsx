@@ -8,7 +8,7 @@ export default class ArtistQuestionsScreen extends PureComponent {
   }
 
   render() {
-    const {question} = this.props;
+    const {question, onAnswer} = this.props;
     const {answers, song} = question;
 
     return (
@@ -41,7 +41,12 @@ export default class ArtistQuestionsScreen extends PureComponent {
             </div>
           </div>
 
-          <form className="game__artist">
+          <form
+            className="game__artist"
+            onSubmit={(evt) => {
+              evt.preventDefault();
+              onAnswer(question);
+            }}>
             {answers.map((answer, index) => (
               <div key={`${index}-${answer.picture}`} className="artist">
                 <input className="artist__input visually-hidden" type="radio" name="answer" value="artist-1" id="answer-1" />
@@ -58,6 +63,7 @@ export default class ArtistQuestionsScreen extends PureComponent {
 }
 
 ArtistQuestionsScreen.propTypes = {
+  onAnswer: PropTypes.func.isRequired,
   question: PropTypes.shape({
     answers: PropTypes.arrayOf(PropTypes.shape({
       picture: PropTypes.string.isRequired,

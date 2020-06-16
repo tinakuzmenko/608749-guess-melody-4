@@ -20,7 +20,8 @@ const App = ({errorsCount, questions}) => {
       </Route>
       <Route exact path="/dev-artist">
         <ArtistQuestionsScreen
-          question={questions[1]} />
+          question={questions[1]}
+          onAnswer={() => {}} />
       </Route>
     </Switch>
   </BrowserRouter>;
