@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GenreQuestionsScreen Renders correctly with ArtistQuestionsScreen 1`] = `
+exports[`GameScreen Renders correctly with ArtistQuestionsScreen 1`] = `
 <section
   className="game game--artist"
 >
@@ -61,7 +61,7 @@ exports[`GenreQuestionsScreen Renders correctly with ArtistQuestionsScreen 1`] =
 </section>
 `;
 
-exports[`GenreQuestionsScreen Renders correctly with GenreQuestionsScreen 1`] = `
+exports[`GameScreen Renders correctly with GenreQuestionsScreen 1`] = `
 <section
   className="game game--genre"
 >

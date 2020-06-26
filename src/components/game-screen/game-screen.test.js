@@ -5,7 +5,7 @@ import {GameType} from "../../helpers/constants.js";
 
 const children = <div className="children-component" />;
 
-describe(`GenreQuestionsScreen`, () => {
+describe(`GameScreen`, () => {
   it(`Renders correctly with GenreQuestionsScreen`, () => {
     const tree = renderer
       .create(
