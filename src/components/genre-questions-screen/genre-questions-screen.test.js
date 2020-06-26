@@ -25,8 +25,11 @@ describe(`GenreQuestionsScreen`, () => {
     const tree = renderer
       .create(<GenreQuestionsScreen
         question={question}
-        onAnswer={() => {}} />)
-      .toJSON();
+        onAnswer={() => {}} />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

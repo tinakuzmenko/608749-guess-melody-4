@@ -14,8 +14,11 @@ describe(`AudioPlayer`, () => {
       .create(<AudioPlayer
         isPlaying={false}
         src={mock.song.src}
-      />)
-      .toJSON();
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -24,8 +27,11 @@ describe(`AudioPlayer`, () => {
       .create(<AudioPlayer
         isPlaying={true}
         src={mock.song.src}
-      />)
-      .toJSON();
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
