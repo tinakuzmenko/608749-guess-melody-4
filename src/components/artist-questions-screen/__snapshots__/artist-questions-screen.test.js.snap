@@ -16,7 +16,8 @@ exports[`ArtistQuestionsScreen Renders correctly 1`] = `
       className="track"
     >
       <button
-        className="track__button track__button--play"
+        className="track__button track__button--pause"
+        onClick={[Function]}
         type="button"
       />
       <div

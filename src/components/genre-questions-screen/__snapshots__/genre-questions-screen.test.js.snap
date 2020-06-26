@@ -19,7 +19,8 @@ exports[`GenreQuestionsScreen Renders correctly 1`] = `
       className="track"
     >
       <button
-        className="track__button track__button--play"
+        className="track__button track__button--pause"
+        onClick={[Function]}
         type="button"
       />
       <div
@@ -54,6 +55,7 @@ exports[`GenreQuestionsScreen Renders correctly 1`] = `
     >
       <button
         className="track__button track__button--play"
+        onClick={[Function]}
         type="button"
       />
       <div
@@ -88,6 +90,7 @@ exports[`GenreQuestionsScreen Renders correctly 1`] = `
     >
       <button
         className="track__button track__button--play"
+        onClick={[Function]}
         type="button"
       />
       <div
@@ -122,6 +125,7 @@ exports[`GenreQuestionsScreen Renders correctly 1`] = `
     >
       <button
         className="track__button track__button--play"
+        onClick={[Function]}
         type="button"
       />
       <div
