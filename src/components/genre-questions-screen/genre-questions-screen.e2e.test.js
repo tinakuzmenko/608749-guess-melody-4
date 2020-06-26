@@ -32,7 +32,8 @@ describe(`GenreQuestionsScreen e2e tests`, () => {
     const genreQuestionsScreen = shallow(
         <GenreQuestionsScreen
           question={question}
-          onAnswer={onAnswer} />
+          onAnswer={onAnswer}
+          renderPlayer={() => {}} />
     );
 
     const formElement = genreQuestionsScreen.find(`form`);
@@ -53,6 +54,7 @@ describe(`GenreQuestionsScreen e2e tests`, () => {
     const genreQuestion = shallow(<GenreQuestionsScreen
       onAnswer={onAnswer}
       question={question}
+      renderPlayer={() => {}}
     />);
 
     const form = genreQuestion.find(`form`);

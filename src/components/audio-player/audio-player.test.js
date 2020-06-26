@@ -13,6 +13,7 @@ describe(`AudioPlayer`, () => {
     const tree = renderer
       .create(<AudioPlayer
         isPlaying={false}
+        onPlayButtonClick={() => {}}
         src={mock.song.src}
       />, {
         createNodeMock: () => {
@@ -26,6 +27,7 @@ describe(`AudioPlayer`, () => {
     const tree = renderer
       .create(<AudioPlayer
         isPlaying={true}
+        onPlayButtonClick={() => {}}
         src={mock.song.src}
       />, {
         createNodeMock: () => {
