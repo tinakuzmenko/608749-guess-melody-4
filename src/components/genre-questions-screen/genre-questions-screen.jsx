@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import AudioPlayer from '../audio-player/audio-player.jsx';
 import {GameType} from '../../helpers/constants.js';
 
 export default class GenreQuestionsScreen extends PureComponent {
@@ -8,14 +7,13 @@ export default class GenreQuestionsScreen extends PureComponent {
     super(props);
 
     this.state = {
-      activePlayer: 0,
       answers: [false, false, false, false],
     };
   }
 
   render() {
-    const {onAnswer, question} = this.props;
-    const {answers: userAnswers, activePlayer} = this.state;
+    const {onAnswer, question, renderPlayer} = this.props;
+    const {answers: userAnswers} = this.state;
     const {answers, genre} = question;
 
     return (
@@ -31,15 +29,7 @@ export default class GenreQuestionsScreen extends PureComponent {
           {answers.map((answer, index) =>
             (
               <div key={`${index}-${answer.src}`} className="track">
-                <AudioPlayer
-                  src={answer.src}
-                  onPlayButtonClick={() => {
-                    this.setState({
-                      activePlayer: activePlayer === index ? -1 : index,
-                    });
-                  }}
-                  isPlaying={index === activePlayer}
-                />
+                {renderPlayer(answer.src, index)}
                 <div className="game__answer">
                   <input
                     className="game__input visually-hidden"
@@ -50,7 +40,6 @@ export default class GenreQuestionsScreen extends PureComponent {
                     checked={userAnswers[index]}
                     onChange={(evt) => {
                       const value = evt.target.checked;
-
                       this.setState({
                         answers: [...userAnswers.slice(0, index), value, ...userAnswers.slice(index + 1)],
                       });
@@ -80,4 +69,5 @@ GenreQuestionsScreen.propTypes = {
     genre: PropTypes.string.isRequired,
     type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
   }).isRequired,
+  renderPlayer: PropTypes.func.isRequired,
 };
