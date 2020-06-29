@@ -2,9 +2,14 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
+import GameScreen from '../game-screen/game-screen.jsx';
 import GenreQuestionsScreen from '../genre-questions-screen/genre-questions-screen.jsx';
 import ArtistQuestionsScreen from '../artist-questions-screen/artist-questions-screen.jsx';
+import withAudioPlayer from '../../hocs/with-audio-player.jsx';
 import {GameType} from '../../helpers/constants.js';
+
+const GenreQuestionsScreenWrapped = withAudioPlayer(GenreQuestionsScreen);
+const ArtistQuestionsScreenWrapped = withAudioPlayer(ArtistQuestionsScreen);
 
 export default class App extends PureComponent {
   constructor(props) {
@@ -38,25 +43,29 @@ export default class App extends PureComponent {
       switch (question.type) {
         case GameType.ARTIST:
           return (
-            <ArtistQuestionsScreen
-              question={question}
-              onAnswer={() => {
-                this.setState((prevState) => ({
-                  step: prevState.step + 1,
-                }));
-              }}
-            />
+            <GameScreen type={question.type}>
+              <ArtistQuestionsScreenWrapped
+                question={question}
+                onAnswer={() => {
+                  this.setState((prevState) => ({
+                    step: prevState.step + 1,
+                  }));
+                }}
+              />
+            </GameScreen>
           );
         case GameType.GENRE:
           return (
-            <GenreQuestionsScreen
-              question={question}
-              onAnswer={() => {
-                this.setState((prevState) => ({
-                  step: prevState.step + 1,
-                }));
-              }}
-            />
+            <GameScreen type={question.type}>
+              <GenreQuestionsScreenWrapped
+                question={question}
+                onAnswer={() => {
+                  this.setState((prevState) => ({
+                    step: prevState.step + 1,
+                  }));
+                }}
+              />
+            </GameScreen>
           );
       }
     }
@@ -73,12 +82,12 @@ export default class App extends PureComponent {
           {this._renderGameScreen()}
         </Route>
         <Route exact path="/dev-genre">
-          <GenreQuestionsScreen
+          <GenreQuestionsScreenWrapped
             question={questions[0]}
             onAnswer={() => {}} />
         </Route>
         <Route exact path="/dev-artist">
-          <ArtistQuestionsScreen
+          <ArtistQuestionsScreenWrapped
             question={questions[1]}
             onAnswer={() => {}} />
         </Route>

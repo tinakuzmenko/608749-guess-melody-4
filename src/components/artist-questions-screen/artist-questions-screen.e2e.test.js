@@ -40,6 +40,7 @@ describe(`ArtistQuestionsScreen e2e tests`, () => {
     const screen = shallow(<ArtistQuestionsScreen
       onAnswer={onAnswer}
       question={question}
+      renderPlayer={() => {}}
     />);
 
     const answerInputs = screen.find(`input`);
