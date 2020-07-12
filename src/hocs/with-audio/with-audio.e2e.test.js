@@ -26,7 +26,6 @@ Player.propTypes = {
   ]).isRequired,
 };
 
-
 it(`Checks that HOC's callback turn on audio (play)`, () => {
   const PlayerWrapped = withAudio(Player);
   const wrapper = mount(<PlayerWrapped
