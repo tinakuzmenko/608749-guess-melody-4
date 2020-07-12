@@ -7,11 +7,12 @@ import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 import GameScreen from '../game-screen/game-screen.jsx';
 import GenreQuestionsScreen from '../genre-questions-screen/genre-questions-screen.jsx';
 import ArtistQuestionsScreen from '../artist-questions-screen/artist-questions-screen.jsx';
-import withAudioPlayer from '../../hocs/with-active-player/with-active-player.jsx';
+import withActivePlayer from "../../hocs/with-active-player/with-active-player.jsx";
+import withUserAnswer from "../../hocs/with-user-answer/with-user-answer.jsx";
 import {GameType} from '../../helpers/constants.js';
 
-const GenreQuestionsScreenWrapped = withAudioPlayer(GenreQuestionsScreen);
-const ArtistQuestionsScreenWrapped = withAudioPlayer(ArtistQuestionsScreen);
+const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionsScreen));
+const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionsScreen);
 
 class App extends PureComponent {
   _renderGameScreen() {
@@ -38,7 +39,7 @@ class App extends PureComponent {
         case GameType.ARTIST:
           return (
             <GameScreen type={question.type}>
-              <ArtistQuestionsScreenWrapped
+              <ArtistQuestionScreenWrapped
                 question={question}
                 onAnswer={onUserAnswer}
               />
@@ -47,7 +48,7 @@ class App extends PureComponent {
         case GameType.GENRE:
           return (
             <GameScreen type={question.type}>
-              <GenreQuestionsScreenWrapped
+              <GenreQuestionScreenWrapped
                 question={question}
                 onAnswer={onUserAnswer}
               />
@@ -68,12 +69,12 @@ class App extends PureComponent {
           {this._renderGameScreen()}
         </Route>
         <Route exact path="/dev-genre">
-          <GenreQuestionsScreenWrapped
+          <GenreQuestionScreenWrapped
             question={questions[0]}
             onAnswer={() => {}} />
         </Route>
         <Route exact path="/dev-artist">
-          <ArtistQuestionsScreenWrapped
+          <ArtistQuestionScreenWrapped
             question={questions[1]}
             onAnswer={() => {}} />
         </Route>

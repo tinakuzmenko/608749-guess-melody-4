@@ -26,7 +26,9 @@ describe(`GenreQuestionsScreen`, () => {
       .create(<GenreQuestionsScreen
         question={question}
         onAnswer={() => {}}
-        renderPlayer={() => {}} />, {
+        renderPlayer={() => {}}
+        onChange={() => {}}
+        userAnswers={[false, false, false, false]} />, {
         createNodeMock: () => {
           return {};
         }
