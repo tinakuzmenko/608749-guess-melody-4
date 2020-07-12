@@ -7,7 +7,7 @@ import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 import GameScreen from '../game-screen/game-screen.jsx';
 import GenreQuestionsScreen from '../genre-questions-screen/genre-questions-screen.jsx';
 import ArtistQuestionsScreen from '../artist-questions-screen/artist-questions-screen.jsx';
-import withAudioPlayer from '../../hocs/with-audio-player.jsx';
+import withAudioPlayer from '../../hocs/with-active-player/with-active-player.jsx';
 import {GameType} from '../../helpers/constants.js';
 
 const GenreQuestionsScreenWrapped = withAudioPlayer(GenreQuestionsScreen);
