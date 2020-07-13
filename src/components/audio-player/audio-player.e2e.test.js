@@ -28,16 +28,18 @@ describe(`AudioPlayer e2e tests`, () => {
 
     const audioPlayer = mount(
         <AudioPlayer
+          isLoading={false}
           src={src}
           isPlaying={isPlaying}
           onPlayButtonClick={onPlayButtonClick}
-        />);
+        >
+          <audio />
+        </AudioPlayer>);
 
     const trackButton = audioPlayer.find(`button`);
 
     trackButton.props().onClick();
 
     expect(onPlayButtonClick).toHaveBeenCalledTimes(1);
-    expect(audioPlayer.state().isPlaying).toEqual(false);
   });
 });
